@@ -1,0 +1,19 @@
+# your private schedule(s): never commit
+schedule.local.yaml
+*.local.yaml
+
+# generated calendars
+*.ics
+
+# python
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+.venv/
+
+# google oauth: never commit these
+client_secret.json
+.gcal-token.json

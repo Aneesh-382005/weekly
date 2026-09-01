@@ -1,0 +1,36 @@
+# ---------------------------------------------------------------------------
+#  Example schedule: a made-up weekly class.
+#
+#  Copy this to `schedule.local.yaml` (gitignored) and put your real events
+#  there, or point the tool at any file with `weekly -s path/to/file.yaml`.
+#
+#  Times are 24-hour, local wall-clock. Weekdays: mon tue wed thu fri sat sun.
+# ---------------------------------------------------------------------------
+
+range:
+  name: "Spring 2026"          # free label; shown in the calendar's name
+  start: 2026-01-12            # first date an occurrence may fall on
+  end: 2026-05-01              # last date
+  timezone: "America/New_York" # any IANA timezone name
+
+event:
+  title: "Intro to Pottery"
+  location: "Community Center, Studio B"
+  description: "Bring an apron. Wheel throwing weeks 1-6, glazing after."
+  reminders_minutes: [60]      # popup alarms before start; [] for none
+
+# Weekly recurring blocks. One entry per contiguous block; a day with a
+# mid-session gap gets two entries.
+events:
+  - { day: tue, start: "18:00", end: "20:00" }
+  - { day: thu, start: "18:00", end: "20:00" }
+  - { day: sat, start: "10:00", end: "13:00" }
+
+# Dates with no session. Any occurrence landing here is dropped.
+# `reason` is a note for humans and does not affect output.
+exclude:
+  - { date: 2026-01-19, reason: "MLK Day - center closed" }
+  - { date: 2026-03-16, reason: "Spring break (week 1)" }
+  - { date: 2026-03-17, reason: "Spring break" }
+  - { date: 2026-03-19, reason: "Spring break" }
+  - { date: 2026-03-21, reason: "Spring break (week 1)" }

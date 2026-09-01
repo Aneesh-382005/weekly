@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "weekly"
+version = "0.1.0"
+description = "Turn recurring weekly events described in YAML into an .ics file"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+gcal = [
+    "google-api-python-client>=2.0",
+    "google-auth-httplib2>=0.2",
+    "google-auth-oauthlib>=1.0",
+]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.scripts]
+weekly = "weekly.cli:main"
+
+[tool.setuptools]
+packages = ["weekly"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
